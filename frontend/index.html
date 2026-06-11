@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="new_logo.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RORIRI Software Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css?v=timeline-whatsapp-1"/>
+</head>
+<body class="page-login">
+
+<div id="loginPage" class="login-wrapper">
+  <div class="login-bg"><div class="login-blob b1"></div><div class="login-blob b2"></div><div class="login-blob b3"></div></div>
+  <div class="login-card">
+    <div class="login-logo"><img src="roririlogoo-removebg-preview.png" class="logo-img" alt="Logo"/></div>
+    <h1 class="login-title">Welcome back</h1>
+    <p class="login-sub">Sign in to your workspace</p>
+    <div id="loginError" class="login-error hidden">Invalid credentials. Try again.</div>
+    <div class="field-group"><label>Email / Username</label><input type="text" id="loginEmail" placeholder="Email or username" autocomplete="off"/></div>
+    <div class="field-group"><label>Password</label><div class="password-wrap"><input type="password" id="loginPassword" placeholder="Password"/><button class="pwd-toggle" onclick="togglePassword('loginPassword',this)" tabindex="-1">Show</button></div></div>
+    <button class="btn-login" onclick="handleLogin()">Sign In</button>
+  </div>
+</div>
+
+<div id="app" class="app hidden">
+
+  <!-- ── VIEWING-AS-CLIENT BANNER ── -->
+  <div id="viewingAsBanner" class="viewing-as-banner hidden"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header"><img src="roririlogoo-removebg-preview.png" class="logo-img" alt="Logo"/><button class="sidebar-toggle" id="hamburgerBtn" onclick="toggleSidebar()" aria-label="Collapse sidebar" aria-controls="sidebar" aria-expanded="true">☰</button></div>
+    <nav class="sidebar-nav" id="mainSidebarNav">
+      <div class="nav-section-label">MENU</div>
+      <a class="nav-item" data-page="dashboard" onclick="navigate('dashboard')"><span class="nav-icon"><i class="fa-solid fa-house"></i></span><span class="nav-text">Dashboard</span></a>
+      <div class="nav-group" data-admin-only="true"><div class="nav-parent" onclick="toggleGroup('groupBusiness')"><span class="nav-icon"><i class="fa-solid fa-layer-group"></i></span><span class="nav-text">Entities</span><span class="nav-arrow" id="arrowBusiness"><i class="fa-solid fa-chevron-right"></i></span></div><div class="nav-children hidden entity-children business-group-children" id="groupBusiness"><div class="entity-subgroup"><div class="nav-child entity-subparent" onclick="toggleGroup('groupBusinessSocial')"><span class="child-symbol"><i class="fa-solid fa-hand-holding-heart"></i></span>Social & Charitable<span class="nav-arrow" id="arrowBusinessSocial"><i class="fa-solid fa-chevron-right"></i></span></div><div class="nav-children hidden business-entity-children" id="groupBusinessSocial"><a class="nav-child entity-launch" onclick="enterEntityWorkspace('foundation')"><span class="child-symbol"><i class="fa-solid fa-heart"></i></span>Roriri Foundation<span class="entity-launch-arrow"><i class="fa-solid fa-arrow-right"></i></span></a></div></div><div class="entity-subgroup"><div class="nav-child entity-subparent" onclick="toggleGroup('groupBusinessTechnology')"><span class="child-symbol"><i class="fa-solid fa-laptop-code"></i></span>Technology & Employment<span class="nav-arrow" id="arrowBusinessTechnology"><i class="fa-solid fa-chevron-right"></i></span></div><div class="nav-children hidden business-entity-children" id="groupBusinessTechnology"><a class="nav-child entity-launch" onclick="enterEntityWorkspace('roriri')"><span class="child-symbol"><i class="fa-solid fa-asterisk"></i></span>Roriri Software Solutions<span class="entity-launch-arrow"><i class="fa-solid fa-arrow-right"></i></span></a><a class="nav-child entity-launch" onclick="enterEntityWorkspace('nexgen')"><span class="child-symbol"><i class="fa-solid fa-graduation-cap"></i></span>Nexgen IT Academy<span class="entity-launch-arrow"><i class="fa-solid fa-arrow-right"></i></span></a><a class="nav-child entity-launch" onclick="enterEntityWorkspace('riya')"><span class="child-symbol"><i class="fa-solid fa-briefcase"></i></span>Riya Consultancy<span class="entity-launch-arrow"><i class="fa-solid fa-arrow-right"></i></span></a></div></div><div class="entity-subgroup"><div class="nav-child entity-subparent" onclick="toggleGroup('groupBusinessManufacturing')"><span class="child-symbol"><i class="fa-solid fa-industry"></i></span>Manufacturing & Trading<span class="nav-arrow" id="arrowBusinessManufacturing"><i class="fa-solid fa-chevron-right"></i></span></div><div class="nav-children hidden business-entity-children" id="groupBusinessManufacturing"><a class="nav-child entity-launch" onclick="enterEntityWorkspace('roshan')"><span class="child-symbol"><i class="fa-solid fa-shop"></i></span>Roshan Traders<span class="entity-launch-arrow"><i class="fa-solid fa-arrow-right"></i></span></a><a class="nav-child entity-launch" onclick="enterEntityWorkspace('rn')"><span class="child-symbol"><i class="fa-solid fa-building-columns"></i></span>RN Chamber<span class="entity-launch-arrow"><i class="fa-solid fa-arrow-right"></i></span></a></div></div><div class="entity-subgroup"><div class="nav-child entity-subparent" onclick="toggleGroup('groupBusinessAgriculture')"><span class="child-symbol"><i class="fa-solid fa-seedling"></i></span>Agriculture & Wellness<span class="nav-arrow" id="arrowBusinessAgriculture"><i class="fa-solid fa-chevron-right"></i></span></div><div class="nav-children hidden business-entity-children" id="groupBusinessAgriculture"><a class="nav-child entity-launch" onclick="enterEntityWorkspace('rithish')"><span class="child-symbol"><i class="fa-solid fa-seedling"></i></span>Rithish Farms<span class="entity-launch-arrow"><i class="fa-solid fa-arrow-right"></i></span></a></div></div></div></div>
+      <div class="nav-group"><div class="nav-parent" onclick="toggleGroup('groupFinance')"><span class="nav-icon"><i class="fa-solid fa-wallet"></i></span><span class="nav-text">Finance</span><span class="nav-arrow" id="arrowFinance"><i class="fa-solid fa-chevron-right"></i></span></div><div class="nav-children hidden" id="groupFinance"><a class="nav-child" data-page="payments" onclick="navigate('payments')"><span class="child-symbol"><i class="fa-solid fa-credit-card"></i></span>Payments</a><a class="nav-child" data-page="invoice" data-admin-only="true" onclick="navigate('invoice')"><span class="child-symbol"><i class="fa-solid fa-file-invoice-dollar"></i></span>Invoice</a></div></div>
+      <div class="nav-group"><div class="nav-parent" onclick="toggleGroup('groupComm')"><span class="nav-icon"><i class="fa-solid fa-envelope-open-text"></i></span><span class="nav-text">Communication</span><span class="nav-arrow" id="arrowComm"><i class="fa-solid fa-chevron-right"></i></span></div><div class="nav-children hidden" id="groupComm"><a class="nav-child" data-page="messages" onclick="navigate('messages')"><span class="child-symbol"><i class="fa-solid fa-message"></i></span>Messages<span class="nav-badge" id="badgeMessages" style="display:none;margin-left:auto"></span></a><a class="nav-child" data-page="notes" data-admin-only="true" onclick="navigate('notes')"><span class="child-symbol"><i class="fa-solid fa-note-sticky"></i></span>Notes</a><a class="nav-child" data-page="ratings" data-admin-only="true" onclick="navigate('ratings')"><span class="child-symbol"><i class="fa-solid fa-star"></i></span>Ratings</a></div></div>
+      <a class="nav-item" data-admin-only="true" data-page="activity" onclick="navigate('activity')"><span class="nav-icon"><i class="fa-solid fa-clock-rotate-left"></i></span><span class="nav-text">Activity</span></a>
+      <a class="nav-item client-only-nav" data-page="clientprojects" onclick="navigate('clientprojects')" style="display:none"><span class="nav-icon"><i class="fa-solid fa-briefcase"></i></span><span class="nav-text">Projects</span></a>
+    </nav>
+    <nav class="sidebar-nav entity-workspace-nav hidden" id="roririSidebarNav" data-entity-workspace-nav="roriri" data-admin-only="true">
+      <a class="nav-item entity-back-item" onclick="exitEntityWorkspace()"><span class="nav-icon"><i class="fa-solid fa-arrow-left"></i></span><span class="nav-text">Back to Main</span></a>
+      <div class="entity-workspace-heading"><span class="entity-workspace-icon"><i class="fa-solid fa-asterisk"></i></span><div><div class="entity-workspace-kicker">Entity</div><div class="entity-workspace-name">Roriri Software Solutions</div></div></div>
+      <a class="nav-item" data-page="dashboard" onclick="navigate('dashboard')"><span class="nav-icon"><i class="fa-solid fa-house"></i></span><span class="nav-text">Dashboard</span></a>
+      <div class="nav-group" data-admin-only="true"><div class="nav-parent" onclick="toggleGroup('groupRoririEnquiries')"><span class="nav-icon"><i class="fa-solid fa-comments"></i></span><span class="nav-text">Enquiries</span><span class="nav-badge" id="badgeEnquiries" style="display:none"></span><span class="nav-arrow" id="arrowRoririEnquiries"><i class="fa-solid fa-chevron-right"></i></span></div><div class="nav-children hidden" id="groupRoririEnquiries"><a class="nav-child" data-page="enquiries" onclick="navigate('enquiries')"><span class="child-symbol"><i class="fa-solid fa-list-check"></i></span>All Enquiries</a><a class="nav-child" data-page="enquiryform" onclick="navigate('enquiryform')"><span class="child-symbol"><i class="fa-solid fa-file-pen"></i></span>Enquiry Form</a></div></div>
+      <div class="nav-group" data-admin-only="true"><div class="nav-parent" onclick="toggleGroup('groupRoririProjects')"><span class="nav-icon"><i class="fa-solid fa-folder-open"></i></span><span class="nav-text">Projects</span><span class="nav-arrow" id="arrowRoririProjects"><i class="fa-solid fa-chevron-right"></i></span></div><div class="nav-children hidden" id="groupRoririProjects"><a class="nav-child" data-page="projects" onclick="navigate('projects')"><span class="child-symbol"><i class="fa-solid fa-folder-tree"></i></span>All Projects</a><a class="nav-child" data-page="timeline" onclick="navigate('timeline')"><span class="child-symbol"><i class="fa-solid fa-timeline"></i></span>Timeline Tracker</a><a class="nav-child" data-page="documents" onclick="navigate('documents')"><span class="child-symbol"><i class="fa-solid fa-file-lines"></i></span>Documents</a></div></div>
+      <a class="nav-item" data-admin-only="true" data-page="websites" onclick="navigate('websites')"><span class="nav-icon"><i class="fa-solid fa-globe"></i></span><span class="nav-text">Websites</span></a>
+      <a class="nav-item" data-admin-only="true" onclick="window.open('https://demoerp.roririitpark.com/account/dashboard','_blank')"><span class="nav-icon"><i class="fa-solid fa-gears"></i></span><span class="nav-text">Roriri ERP</span></a>
+      <div class="nav-group" data-admin-only="true"><div class="nav-parent" onclick="toggleGroup('groupRoririPortals')"><span class="nav-icon"><i class="fa-solid fa-door-open"></i></span><span class="nav-text">Portals</span><span class="nav-arrow" id="arrowRoririPortals"><i class="fa-solid fa-chevron-right"></i></span></div><div class="nav-children hidden" id="groupRoririPortals"><a class="nav-child" data-page="clients" onclick="navigate('clients')"><span class="child-symbol"><i class="fa-solid fa-user"></i></span>Client</a><a class="nav-child external-nav-child" href="https://college.roririsoft.com/admin.php" target="_blank" rel="noopener"><span class="child-symbol"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>College</a><a class="nav-child external-nav-child" href="https://workforce.roririsoft.com/login.php" target="_blank" rel="noopener"><span class="child-symbol"><i class="fa-solid fa-chalkboard-user"></i></span>Trainee</a><a class="nav-child" data-page="interns" onclick="navigate('interns')"><span class="child-symbol"><i class="fa-solid fa-user-graduate"></i></span>Interns</a><a class="nav-child" data-page="employees" onclick="navigate('employees')"><span class="child-symbol"><i class="fa-solid fa-users-gear"></i></span>Employees</a></div></div>
+    </nav>
+    <nav class="sidebar-nav entity-workspace-nav hidden" id="rnChamberSidebarNav" data-entity-workspace-nav="rn" data-admin-only="true">
+      <a class="nav-item entity-back-item" onclick="exitEntityWorkspace()"><span class="nav-icon"><i class="fa-solid fa-arrow-left"></i></span><span class="nav-text">Back to Main</span></a>
+      <div class="entity-workspace-heading"><span class="entity-workspace-icon"><i class="fa-solid fa-building-columns"></i></span><div><div class="entity-workspace-kicker">Entity</div><div class="entity-workspace-name">RN Chamber</div></div></div>
+      <a class="nav-item" data-page="thingsexpense" onclick="navigate('thingsexpense')"><span class="nav-icon"><i class="fa-solid fa-cart-flatbed"></i></span><span class="nav-text">Things Expense</span></a>
+      <a class="nav-item" data-page="bricksincome" onclick="navigate('bricksincome')"><span class="nav-icon"><i class="fa-solid fa-cubes-stacked"></i></span><span class="nav-text">Bricks Income</span></a>
+      <a class="nav-item" data-page="employeesalary" onclick="navigate('employeesalary')"><span class="nav-icon"><i class="fa-solid fa-money-check-dollar"></i></span><span class="nav-text">Employee Salary</span></a>
+      <a class="nav-item" data-page="invoice" onclick="navigate('invoice')"><span class="nav-icon"><i class="fa-solid fa-receipt"></i></span><span class="nav-text">Invoice</span></a>
+    </nav>
+    <nav class="sidebar-nav entity-workspace-nav hidden" id="roshanSidebarNav" data-entity-workspace-nav="roshan" data-admin-only="true">
+      <a class="nav-item entity-back-item" onclick="exitEntityWorkspace()"><span class="nav-icon"><i class="fa-solid fa-arrow-left"></i></span><span class="nav-text">Back to Main</span></a>
+      <div class="entity-workspace-heading"><span class="entity-workspace-icon"><i class="fa-solid fa-shop"></i></span><div><div class="entity-workspace-kicker">Entity</div><div class="entity-workspace-name">Roshan Traders</div></div></div>
+      <a class="nav-item" data-page="roshantraders" onclick="navigate('roshantraders')"><span class="nav-icon"><i class="fa-solid fa-right-left"></i></span><span class="nav-text">Trade</span></a>
+      <a class="nav-item external-nav-child" href="https://invoice.roririsoft.com/" target="_blank" rel="noopener"><span class="nav-icon"><i class="fa-solid fa-file-invoice"></i></span><span class="nav-text">Invoice</span></a>
+      <a class="nav-item external-nav-child" href="https://ledger.roririitpark.com/login" target="_blank" rel="noopener"><span class="nav-icon"><i class="fa-solid fa-book"></i></span><span class="nav-text">Ledger</span></a>
+    </nav>
+    <nav class="sidebar-nav entity-workspace-nav hidden" data-entity-workspace-nav="nexgen" data-admin-only="true">
+      <a class="nav-item entity-back-item" onclick="exitEntityWorkspace()"><span class="nav-icon"><i class="fa-solid fa-arrow-left"></i></span><span class="nav-text">Back to Main</span></a>
+      <div class="entity-workspace-heading"><span class="entity-workspace-icon"><i class="fa-solid fa-graduation-cap"></i></span><div><div class="entity-workspace-kicker">Entity</div><div class="entity-workspace-name">Nexgen IT Academy</div></div></div>
+      <a class="nav-item" data-page="entityplaceholder" onclick="navigate('entityplaceholder')"><span class="nav-icon"><i class="fa-solid fa-cube"></i></span><span class="nav-text">Workspace</span></a>
+    </nav>
+    <nav class="sidebar-nav entity-workspace-nav hidden" data-entity-workspace-nav="riya" data-admin-only="true">
+      <a class="nav-item entity-back-item" onclick="exitEntityWorkspace()"><span class="nav-icon"><i class="fa-solid fa-arrow-left"></i></span><span class="nav-text">Back to Main</span></a>
+      <div class="entity-workspace-heading"><span class="entity-workspace-icon"><i class="fa-solid fa-briefcase"></i></span><div><div class="entity-workspace-kicker">Entity</div><div class="entity-workspace-name">Riya Consultancy</div></div></div>
+      <a class="nav-item" data-page="entityplaceholder" onclick="navigate('entityplaceholder')"><span class="nav-icon"><i class="fa-solid fa-cube"></i></span><span class="nav-text">Workspace</span></a>
+    </nav>
+    <nav class="sidebar-nav entity-workspace-nav hidden" data-entity-workspace-nav="rithish" data-admin-only="true">
+      <a class="nav-item entity-back-item" onclick="exitEntityWorkspace()"><span class="nav-icon"><i class="fa-solid fa-arrow-left"></i></span><span class="nav-text">Back to Main</span></a>
+      <div class="entity-workspace-heading"><span class="entity-workspace-icon"><i class="fa-solid fa-seedling"></i></span><div><div class="entity-workspace-kicker">Entity</div><div class="entity-workspace-name">Rithish Farms</div></div></div>
+      <a class="nav-item" data-page="entityplaceholder" onclick="navigate('entityplaceholder')"><span class="nav-icon"><i class="fa-solid fa-cube"></i></span><span class="nav-text">Workspace</span></a>
+    </nav>
+    <nav class="sidebar-nav entity-workspace-nav hidden" data-entity-workspace-nav="foundation" data-admin-only="true">
+      <a class="nav-item entity-back-item" onclick="exitEntityWorkspace()"><span class="nav-icon"><i class="fa-solid fa-arrow-left"></i></span><span class="nav-text">Back to Main</span></a>
+      <div class="entity-workspace-heading"><span class="entity-workspace-icon"><i class="fa-solid fa-hand-holding-heart"></i></span><div><div class="entity-workspace-kicker">Entity</div><div class="entity-workspace-name">Roriri Foundation</div></div></div>
+      <a class="nav-item" data-page="entityplaceholder" onclick="navigate('entityplaceholder')"><span class="nav-icon"><i class="fa-solid fa-cube"></i></span><span class="nav-text">Workspace</span></a>
+    </nav>
+    <div class="sidebar-footer"><div class="admin-badge"><div class="admin-avatar" id="sidebarAvatar">A</div><div><div class="admin-name" id="sidebarName">Admin</div><div class="admin-role" id="sidebarRole">Super Admin</div></div></div><button class="btn-logout" onclick="handleLogout()">Logout</button></div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+  <main class="main-content" id="mainContent">
+    <div id="pageSpinner" class="page-spinner hidden"><div class="spinner-ring"></div><div class="spinner-text">Loading...</div></div>
+    <header class="topbar"><div class="topbar-left"><button class="mobile-sidebar-toggle" id="mobileSidebarBtn" onclick="toggleSidebar()" aria-label="Open sidebar" aria-controls="sidebar" aria-expanded="false">☰</button><div class="topbar-entity-badge"><span class="topbar-entity-dot"></span><span><span class="topbar-entity-label">ENTITY</span><strong id="topbarEntityName">RN Chamber</strong></span></div><span class="topbar-entity-divider"></span><h2 class="page-title" id="pageTitle">Dashboard</h2></div><div class="topbar-right"><span class="topbar-date" id="topbarDate"></span><button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle Light/Dark Mode">Moon</button><div class="notification-bell" id="notifBell" onclick="toggleNotifDropdown()" title="Notifications">🔔<span class="notif-dot hidden" id="notifDot"></span><span class="notif-count hidden" id="notifCount"></span></div><div class="topbar-avatar" id="topbarAvatar" aria-label="Admin avatar">A</div><div class="notif-dropdown hidden" id="notifDropdown"><div class="notif-dropdown-header"><span class="notif-dropdown-title">Notifications</span><button class="notif-clear-all" onclick="clearAllNotifs()">Clear all</button></div><div class="notif-list" id="notifList"><div class="notif-empty">Loading...</div></div></div></div></header>
+<section id="page-dashboard" class="page active"><div class="dash-welcome" id="dashWelcome"><div class="dash-welcome-text"><h2 class="dash-welcome-title" id="dashWelcomeTitle">Welcome back, Admin 👋</h2><p class="dash-welcome-sub" id="dashWelcomeSub">Here's your business overview for today</p></div><div class="dash-welcome-date" id="dashDate"></div></div><div class="stats-grid"><div class="stat-card c1"><div class="stat-icon">◉</div><div class="stat-label" id="statClientsLabel">Total Clients</div><div class="stat-value" id="statClients">3</div><div class="stat-trend" id="statClientsTrend">All time</div></div><div class="stat-card c2"><div class="stat-icon">◎</div><div class="stat-label" id="statRevenueLabel">Total Revenue</div><div class="stat-value" id="statRevenue"></div><div class="stat-trend" id="statRevenueTrend">Collected</div></div><div class="stat-card c3"><div class="stat-icon">⚠</div><div class="stat-label" id="statPendingLabel">Pending Payments</div><div class="stat-value" id="statPending"></div><div class="stat-trend" id="statPendingTrend">Due amount</div></div><div class="stat-card c4"><div class="stat-icon">↻</div><div class="stat-label" id="statActiveLabel">Active Projects</div><div class="stat-value" id="statActive">3</div><div class="stat-trend" id="statActiveTrend">In Progress</div></div></div><div class="quick-actions"><button class="qa-btn" data-admin-only="true" onclick="openClientModal()"><span class="qa-icon">＋</span><span>Add Client</span></button><button class="qa-btn" data-admin-only="true" onclick="navigate('projects')"><span class="qa-icon">◈</span><span>Projects</span></button><button class="qa-btn" data-admin-only="true" onclick="exportCSV()"><span class="qa-icon">⬇</span><span>Export CSV</span></button><button class="qa-btn" onclick="navigate('messages')"><span class="qa-icon">◫</span><span id="qaMessagesText">Messages</span></button><button class="qa-btn hidden" id="qaDocumentsBtn" onclick="navigate('documents')"><span class="qa-icon">D</span><span>My Documents</span></button><button class="qa-btn hidden" id="qaRatingBtn" onclick="openRatingModal()"><span class="qa-icon">⭐</span><span>Rate Us</span></button><button class="qa-btn hidden" id="qaProjectBtn" onclick="navigate('timeline')"><span class="qa-icon">◎</span><span>My Project</span></button></div><div class="dash-bottom-grid" data-admin-only="true"><div class="deadline-widget"><div class="deadline-widget-title">⏰ Upcoming Deadlines</div><div id="dashDeadlines"><div class="dl-empty">Loading...</div></div></div></div><div class="charts-grid"><div class="chart-card"><div class="chart-card-title">Revenue Overview</div><canvas id="revenueChart" height="200"></canvas></div><div class="chart-card"><div class="chart-card-title">Project Status</div><canvas id="statusChart" height="200"></canvas></div><div class="chart-card"><div class="chart-card-title">Payment Status</div><canvas id="paymentChart" height="200"></canvas></div></div></section>
+    <section id="page-businessgroups" class="page">
+      <div class="rn-page-head">
+        <div>
+          <h3 class="rn-page-title" id="businessGroupTitle">Business Groups</h3>
+          <p class="rn-page-sub" id="businessGroupSub">Choose a group to view its entities</p>
+        </div>
+      </div>
+      <div class="business-entity-grid" id="businessEntityGrid"></div>
+    </section>
+    <section id="page-entityplaceholder" class="page">
+      <div class="entity-empty-wrap" id="entityPlaceholderContent"></div>
+    </section>
+    <section id="page-roshantraders" class="page">
+      <div class="rn-page-head" id="roshanTradeHomeHead">
+        <div>
+          <h3 class="rn-page-title">Trade</h3>
+          <p class="rn-page-sub">Supplier to company to client money transactions</p>
+        </div>
+      </div>
+      <div class="roshan-trade-cards" id="roshanTradeCards"></div>
+      <div class="roshan-trade-panel hidden" id="roshanTradePanel">
+        <div class="roshan-trade-head">
+          <div>
+            <h3 id="roshanTradeTableTitle">Bricks Transactions</h3>
+            <p id="roshanTradeTableSub">Purchase, sales, and payment tracking</p>
+          </div>
+          <div class="roshan-head-actions">
+            <button class="roshan-form-toggle" id="roshanFormToggleBtn" type="button" onclick="toggleRoshanTradeForm()" title="New transaction" aria-label="Open new transaction form" aria-expanded="false"><i class="fa-solid fa-plus"></i></button>
+            <button class="things-back-btn" type="button" onclick="showRoshanTradeHome()">Back to Products</button>
+          </div>
+        </div>
+        <div class="roshan-trade-summary">
+          <div><span>Current Stock</span><strong id="roshanTradeStock">0</strong></div>
+          <div><span>Purchase Due</span><strong id="roshanTradePurchaseDue">Rs 0</strong></div>
+          <div><span>Sales Due</span><strong id="roshanTradeSalesDue">Rs 0</strong></div>
+          <div><span>Total Collected</span><strong id="roshanTradeCollected">Rs 0</strong></div>
+        </div>
+        <div class="roshan-trade-form hidden" id="roshanTradeForm">
+          <div class="roshan-form-title">New Transaction</div>
+          <div class="roshan-form-row three">
+            <div class="field-group"><label>Transaction Type</label><select id="roshanTxType" onchange="syncRoshanTradePartyFields()"><option value="PURCHASE">Purchase</option><option value="SALE">Sale</option></select></div>
+            <div class="field-group"><label>Party</label><input type="text" id="roshanTxParty" list="roshanPartyList" placeholder="Select or type party"/><datalist id="roshanPartyList"></datalist></div>
+            <div class="field-group"><label>Date</label><input type="date" id="roshanTxDate"/></div>
+          </div>
+          <div class="roshan-form-row three">
+            <div class="field-group"><label>Quantity</label><input type="number" id="roshanTxQuantity" min="0" step="0.01" placeholder="100"/></div>
+            <div class="field-group"><label>Rate</label><input type="number" id="roshanTxRate" min="0" step="0.01" placeholder="10"/></div>
+            <div class="field-group"><label>Paid Amount</label><input type="number" id="roshanTxPaid" min="0" step="0.01" placeholder="0"/></div>
+          </div>
+          <div class="roshan-form-row three">
+            <div class="field-group"><label>Total Amount</label><input type="text" id="roshanTxTotalPreview" value="Rs 0" readonly/></div>
+            <div class="field-group"><label>Pending Amount</label><input type="text" id="roshanTxPendingPreview" value="Rs 0" readonly/></div>
+            <div class="field-group"><label>Payment Mode</label><select id="roshanTxMode"><option>Cash</option><option>UPI</option><option>Bank</option></select></div>
+          </div>
+          <div class="roshan-form-row notes">
+            <div class="field-group"><label>Notes</label><input type="text" id="roshanTxNote" placeholder="Optional note"/></div>
+            <button class="btn-primary roshan-save-btn" onclick="saveRoshanTradeTransaction()">Save Transaction</button>
+          </div>
+        </div>
+        <div class="table-wrap rn-table-wrap roshan-table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Date</th><th>Type</th><th>Party</th><th>Quantity</th><th>Total</th><th>Paid</th><th>Pending</th><th>Status</th></tr></thead>
+            <tbody id="roshanTradeTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section id="page-clients" class="page"><div class="page-actions"><div class="search-wrap"><input type="text" id="clientSearch" placeholder="Search clients..." oninput="filterClients()"/><select id="clientFilter" onchange="filterClients()"><option value="">All Status</option><option value="Pending">Pending</option><option value="In Progress">In Progress</option><option value="Completed">Completed</option></select><select id="paymentFilter" onchange="filterClients()"><option value="">All Payments</option><option value="Paid">Paid</option><option value="Partial">Partial</option><option value="Due">Due</option></select></div><div class="action-btns"><button class="btn-export" data-admin-only="true" onclick="exportCSV()">Export CSV</button><button class="btn-primary" data-admin-only="true" onclick="openClientModal()">+ Add Client</button></div></div><div class="table-wrap"><table class="data-table" id="clientsTable"><thead><tr><th>#</th><th>Name</th><th>Email</th><th class="client-only-col" style="display:none">Username</th><th class="client-only-col" style="display:none">Password</th><th>Mobile</th><th data-admin-only="true">Actions</th></tr></thead><tbody id="clientsTbody"></tbody></table></div></section>
+
+    <section id="page-clientprojects" class="page"><div class="page-header-row" style="margin-bottom:20px"><h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--text-primary)">My Projects</h3></div><div class="cp-grid" id="clientProjectsGrid"></div></section>
+
+    <section id="page-projects" class="page">
+      <!-- Summary Cards -->
+      <div class="proj-summary-row" id="projSummaryRow"></div>
+      <!-- Filters -->
+      <div class="page-actions" style="margin-top:0">
+        <div class="search-wrap">
+          <input type="text" id="projectSearch" placeholder="Search by project or client..." oninput="filterProjects()"/>
+          <select id="projectStatusFilter" onchange="filterProjects()">
+            <option value="">All Status</option>
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Upcoming">Upcoming</option>
+          </select>
+          <select id="projectClientFilter" onchange="filterProjects()">
+            <option value="">All Clients</option>
+          </select>
+        </div>
+        <div class="action-btns">
+          <button class="btn-primary" onclick="openProjectModal()">+ Add Project</button>
+        </div>
+      </div>
+      <!-- Table -->
+      <div class="table-wrap">
+        <table class="data-table" id="projectsTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Project Name</th>
+              <th>Client</th>
+              <th>Status</th>
+              <th>Project Value</th>
+              <th>Paid</th>
+              <th>Remaining</th>
+              <th>Deadline</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="projectsTbody"></tbody>
+        </table>
+      </div>
+    </section>
+    <section id="page-payments" class="page"><div class="payments-summary" id="paymentsSummary"></div><div class="table-wrap"><table class="data-table"><thead><tr><th>#</th><th>Client</th><th>Project</th><th>Project Cost</th><th>Paid</th><th>Remaining</th><th>Status</th><th data-admin-only="true">Action</th></tr></thead><tbody id="paymentsTbody"></tbody></table></div></section>
+    <section id="page-documents" class="page"><div class="page-actions"><h3 style="color:var(--text-primary)">Client Documents (PRD / Contracts)</h3><button class="btn-primary" data-admin-only="true" onclick="openDocModal()">+ Upload Document</button></div><div class="doc-grid" id="docGrid"></div></section>
+    <section id="page-notes" class="page"><div class="page-actions"><h3 style="color:var(--text-primary)">Client Notes</h3><button class="btn-primary" data-admin-only="true" onclick="openNoteModal()">+ Add Note</button></div><div class="notes-container" id="notesContainer"></div></section>
+    <section id="page-enquiries" class="page"><div class="page-actions"><div class="search-wrap"><input type="search" id="enquirySearch" placeholder="Search by name/email/phone" oninput="loadEnquiries()"/><select id="enquirySourceFilter" onchange="loadEnquiries()"><option value="">All Sources</option></select><input type="date" id="enquiryDateFilter" onchange="loadEnquiries()"/><select id="enquiryStatusFilter" onchange="loadEnquiries()"><option value="">All Status</option><option>New</option><option>Contacted</option><option>Converted</option><option>Closed</option></select></div><button class="btn-primary" onclick="openEnquiryModal()">+ Add Enquiry</button></div><div class="table-wrap"><table class="data-table"><thead><tr><th>S.No</th><th>Enquiry ID</th><th>Source</th><th>Name</th><th>Email</th><th>Phone Number</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead><tbody id="enquiriesTbody"></tbody></table></div></section>
+    <section id="page-messages" class="page"><div class="messages-layout"><div class="msg-sidebar"><div class="msg-sidebar-title"><span class="msg-sidebar-title-icon"><i class="fa-solid fa-comments"></i></span>Conversations</div><div class="msg-client-list" id="msgClientList"></div></div><div class="msg-chat-area" id="msgChatArea"><div class="msg-empty-state"><div class="msg-empty-icon"><i class="fa-solid fa-comment-dots"></i></div><div class="msg-empty-title">No conversation selected</div><div class="msg-empty-copy">Choose a client from the left to view messages.</div></div></div></div></section>
+    <section id="page-college" class="page">
+      <div class="college-page-head">
+        <div>
+          <h3 class="college-page-title">College Dashboard</h3>
+          <p class="college-page-sub">Live preview from the college portal database</p>
+        </div>
+        <a class="college-open-link" href="https://college.roririsoft.com/login.php" target="_blank" rel="noopener">Open Portal</a>
+      </div>
+      <div id="collegeContent"></div>
+    </section>
+    <section id="page-activity" class="page"><div class="activity-full" id="activityFull"></div></section>
+    <section id="page-invoice" class="page"><div class="page-actions"><h3 style="color:var(--text-primary)">Invoice Generator</h3></div><div class="invoice-layout"><div class="invoice-form-card"><div class="invoice-form-title">Generate Invoice</div><div class="field-group"><label>Select Client</label><select id="invClientId" onchange="previewInvoice()"></select></div><div class="field-group"><label>Invoice Number</label><input type="text" id="invNumber" placeholder="INV-0001" oninput="previewInvoice()"/></div><div class="field-group"><label>Invoice Date</label><input type="date" id="invDate" onchange="previewInvoice()"/></div><div class="field-group"><label>Due Date</label><input type="date" id="invDueDate" onchange="previewInvoice()"/></div><div class="field-group"><label>Notes / Terms</label><textarea id="invNotes" rows="3" placeholder="Payment due within 30 days..." oninput="previewInvoice()"></textarea></div><button class="btn-primary" style="width:100%;margin-top:8px" onclick="saveInvoice()">Save Invoice</button><button class="btn-secondary" style="width:100%;margin-top:8px" onclick="downloadInvoice()">Print / Download PDF</button></div><div class="invoice-preview" id="invoicePreview"><div class="inv-preview-empty">Select a client to preview invoice</div></div><div class="invoice-history-panel"><div class="invoice-form-title">Saved Invoices</div><div id="invoiceHistoryList" class="invoice-history-list"><div class="inv-preview-empty">Loading invoices...</div></div></div></div></section>
+    <section id="page-timeline" class="page"><div class="page-actions"><h3 style="color:var(--text-primary)">Timeline Tracker</h3></div><div class="timeline-client-select"><select id="timelineProjectId" onchange="loadTimeline()" style="min-width:260px;background:var(--bg-surface);border:1px solid var(--border);color:var(--text-primary);padding:10px 14px;border-radius:var(--radius-sm);outline:none;"><option value="">-- Select a Project --</option></select><button class="btn-primary" data-admin-only="true" onclick="addMilestone()">+ Add Milestone</button></div><div id="timelineContent" style="margin-top:24px"></div></section>
+    <section id="page-ratings" class="page"><div class="page-actions"><h3 style="color:var(--text-primary)">Client Ratings & Feedback</h3></div><div class="ratings-summary" id="ratingsSummary"></div><div class="ratings-grid" id="ratingsGrid"></div></section>
+    <section id="page-thingsexpense" class="page">
+      <div class="rn-page-head" id="thingsExpenseHomeHead">
+        <div>
+          <h3 class="rn-page-title">Things Expense</h3>
+          <p class="rn-page-sub">Product based RN Chambers load expenses and weight records</p>
+        </div>
+        <button class="things-add-product-btn" type="button" onclick="openThingsProductModal()">+ Add Product</button>
+      </div>
+      <div class="things-product-grid" id="thingsProductCards"></div>
+      <div class="things-table-panel hidden" id="thingsExpenseTablePanel">
+        <div class="things-table-head">
+          <div>
+            <h3 id="thingsExpenseTableTitle">Firewood Expense Records</h3>
+            <p id="thingsExpenseTableSub">Filtered product expenses for the selected month</p>
+          </div>
+          <button class="things-back-btn" type="button" onclick="showThingsProductHome()">Back to Products</button>
+        </div>
+        <div class="rn-toolbar rn-toolbar-things">
+          <input type="search" id="thingsExpenseSearch" placeholder="Search vehicle, date, or notes..." oninput="renderThingsExpense()"/>
+          <input type="month" id="thingsExpenseMonth" onchange="renderThingsExpense()"/>
+          <input type="date" id="thingsExpenseDateFilter" onchange="renderThingsExpense()"/>
+          <button class="btn-primary" onclick="openThingsExpenseModal()">+ Add Expense</button>
+        </div>
+        <div class="table-wrap rn-table-wrap things-table-wrap" id="thingsExpenseTableWrap">
+          <table class="data-table">
+            <thead><tr><th>S.No</th><th>Date</th><th>Vehicle No</th><th>Product Name</th><th>First Wt</th><th>Second Wt</th><th>Net Wt</th><th>Rate</th><th>Amount</th><th>Action</th></tr></thead>
+            <tbody id="thingsExpenseTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section id="page-employeesalary" class="page">
+      <div class="rn-page-head">
+        <div>
+          <h3 class="rn-page-title">Employees Salary</h3>
+          <p class="rn-page-sub">Payment records for brick workers</p>
+        </div>
+      </div>
+      <div class="rn-metric-grid rn-metric-grid-four">
+        <div class="rn-metric-card"><div class="rn-metric-top"><span>This Saturday Salary</span><div class="rn-metric-icon blue">&#8377;</div></div><div class="rn-metric-value" id="salarySaturdayTotal">₹0</div><div class="rn-metric-sub" id="salarySaturdayLabel">Selected Saturday</div></div>
+        <div class="rn-metric-card"><div class="rn-metric-top"><span>This Month Paid</span><div class="rn-metric-icon green-bg">&#10003;</div></div><div class="rn-metric-value" id="salaryMonthPaid">₹0</div><div class="rn-metric-sub green">Paid this month</div></div>
+        <div class="rn-metric-card salary-progress-card">
+          <div class="rn-metric-top"><span>Salary Progress</span><div class="salary-progress-icon">&#10003;</div></div>
+          <div class="salary-progress-value" id="salaryProgressPercent">0%</div>
+          <div class="salary-progress-track" aria-hidden="true"><div class="salary-progress-fill" id="salaryProgressFill"></div></div>
+          <div class="salary-progress-sub" id="salaryProgressSub">0 of 0 Saturdays Completed</div>
+        </div>
+        <div class="rn-metric-card"><div class="rn-metric-top"><span>Total Workers Paid</span><div class="rn-metric-icon purple">&#128101;</div></div><div class="rn-metric-value" id="salaryTotalWorkers">0</div><div class="rn-metric-sub purple-text">Paid workers</div></div>
+      </div>
+      <div class="rn-toolbar rn-toolbar-salary">
+        <input type="search" id="salarySearch" placeholder="Search worker..." oninput="renderEmployeeSalary()"/>
+        <div class="salary-month-control">
+          <button type="button" class="salary-year-btn" onclick="shiftSalaryYear(-1)" title="Previous year" aria-label="Previous salary year"><i class="fa-solid fa-chevron-left"></i></button>
+          <button type="button" class="rn-month-display" id="salaryMonthDisplay" onclick="openMonthPicker('salaryMonthFilter')" aria-label="Choose salary month">MONTH</button>
+          <input type="month" id="salaryMonthFilter" onchange="renderSalarySaturdayOptions(); renderEmployeeSalary()"/>
+          <button type="button" class="salary-year-btn" onclick="shiftSalaryYear(1)" title="Next year" aria-label="Next salary year"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <select id="salarySaturdayFilter" onchange="renderEmployeeSalary()"><option value="">All Saturdays</option></select>
+        <button class="btn-primary" onclick="openEmployeeSalaryModal()">+ Add Salary</button>
+      </div>
+      <div class="table-wrap rn-table-wrap salary-table-scroll">
+        <table class="data-table employee-salary-table">
+          <thead id="employeeSalaryThead"></thead>
+          <tbody id="employeeSalaryTbody"></tbody>
+        </table>
+      </div>
+    </section>
+    <section id="page-bricksincome" class="page">
+      <div class="rn-page-head">
+        <div>
+          <h3 class="rn-page-title">Bricks Income</h3>
+          <p class="rn-page-sub">RN Chambers monthly brick sales records</p>
+        </div>
+      </div>
+      <div class="rn-metric-grid">
+        <div class="rn-metric-card"><div class="rn-metric-top"><span>Today Bricks Income</span><div class="rn-metric-icon green-bg">&#8377;</div></div><div class="rn-metric-value" id="bricksTodayIncome">₹0</div><div class="rn-metric-sub green">Live daily total</div></div>
+        <div class="rn-metric-card"><div class="rn-metric-top"><span>This Month Income</span><div class="rn-metric-icon blue">&#128200;</div></div><div class="rn-metric-value" id="bricksTotalIncome">₹0</div><div class="rn-metric-sub" id="bricksMonthLabel">Current month</div></div>
+        <div class="rn-metric-card"><div class="rn-metric-top"><span>Total Bricks Sold</span><div class="rn-metric-icon purple">&#129521;</div></div><div class="rn-metric-value" id="bricksTotalSold">0</div><div class="rn-metric-sub purple-text" id="bricksRecordCount">0 records</div></div>
+        <div class="rn-metric-card"><div class="rn-metric-top"><span>Pending Payments</span><div class="rn-metric-icon amber">&#9203;</div></div><div class="rn-metric-value" id="bricksPendingAmount">₹0</div><div class="rn-metric-sub amber-text">Awaiting collection</div></div>
+        <div class="rn-metric-card"><div class="rn-metric-top"><span>Paid Amount</span><div class="rn-metric-icon green-bg">&#10003;</div></div><div class="rn-metric-value" id="bricksPaidAmount">₹0</div><div class="rn-metric-sub green">Collected income</div></div>
+      </div>
+      <div class="rn-toolbar">
+        <input type="search" id="bricksIncomeSearch" placeholder="Search brick detail or date..." oninput="renderBricksIncome()"/>
+        <div class="rn-month-control">
+          <button type="button" class="rn-year-btn" onclick="shiftBricksIncomeYear(-1)" title="Previous year" aria-label="Previous bricks income year"><i class="fa-solid fa-chevron-left"></i></button>
+          <button type="button" class="rn-month-display" id="bricksIncomeMonthDisplay" onclick="openMonthPicker('bricksIncomeMonth')" aria-label="Choose bricks income month">MONTH</button>
+          <input type="month" id="bricksIncomeMonth" onchange="renderBricksIncome()"/>
+          <button type="button" class="rn-year-btn" onclick="shiftBricksIncomeYear(1)" title="Next year" aria-label="Next bricks income year"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <input type="date" id="bricksIncomeDateFilter" onchange="renderBricksIncome()"/>
+        <select id="bricksPaymentStatusFilter" onchange="renderBricksIncome()"><option value="">All Payments</option><option value="Paid">Paid</option><option value="Pending">Pending</option></select>
+        <button class="btn-primary" onclick="focusBricksIncomeEntry()">+ Add Bricks Income</button>
+      </div>
+      <div class="rn-income-form hidden" id="bricksIncomeForm">
+        <div class="rn-entry-title">Manual Table Entry</div>
+        <div class="form-grid">
+          <div class="field-group"><label>Date</label><input type="date" id="bricksDate" onchange="updateBricksAmountPreview()"/></div>
+          <div class="field-group"><label>Detail</label><input type="text" id="bricksDetail" placeholder="Red Brick"/></div>
+          <div class="field-group"><label>Rate</label><input type="number" id="bricksRate" min="0" step="0.01" placeholder="10" oninput="updateBricksAmountPreview()"/></div>
+          <div class="field-group"><label>Count</label><input type="number" id="bricksCount" min="0" step="1" placeholder="500" oninput="updateBricksAmountPreview()"/></div>
+          <div class="field-group"><label>Payment Status</label><select id="bricksPaymentStatus"><option>Paid</option><option>Pending</option></select></div>
+          <div class="field-group"><label>Amount</label><input type="text" id="bricksAmountPreview" value="₹0" readonly/></div>
+        </div>
+        <div class="rn-form-actions">
+          <button class="btn-primary" onclick="saveBricksIncome()">Save Income</button>
+          <button class="btn-ghost" onclick="resetBricksIncomeForm()">Clear</button>
+          <button class="btn-ghost" onclick="closeBricksIncomeForm()">Close</button>
+        </div>
+      </div>
+      <div class="table-wrap rn-table-wrap">
+        <table class="data-table">
+          <thead><tr><th>S.No</th><th>Date</th><th>Detail</th><th>Rate</th><th>Count</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="bricksIncomeTbody"></tbody>
+        </table>
+      </div>
+    </section>
+    <section id="page-websites" class="page">
+      <div class="websites-header">
+        <div class="websites-header-text">
+          <h2 class="websites-title">Our Websites</h2>
+          <p class="websites-sub">All live web products built by Roriri Software Solutions</p>
+        </div>
+        <div class="websites-count-badge" id="websitesCountBadge">18 Live Sites</div>
+      </div>
+      <div class="websites-grid" id="websitesGrid"></div>
+    </section>
+    <section id="page-interns" class="page">
+      <div class="intern-metric-grid">
+        <div class="intern-metric-card">
+          <div class="intern-metric-top"><span>Total Interns</span><div class="intern-metric-icon blue">👥</div></div>
+          <div class="intern-metric-value" id="internTotalCount">0</div>
+          <div class="intern-metric-sub green">● Live from Cloud DB</div>
+        </div>
+        <div class="intern-metric-card">
+          <div class="intern-metric-top"><span>Active Projects</span><div class="intern-metric-icon purple">💼</div></div>
+          <div class="intern-metric-value" id="internActiveProjectCount">0</div>
+          <div class="intern-metric-sub purple-text">◔ Distributing talent</div>
+        </div>
+        <div class="intern-metric-card">
+          <div class="intern-metric-top"><span>System Health</span><div class="intern-metric-icon green-bg">▰</div></div>
+          <div class="intern-metric-value word">Online</div>
+          <div class="intern-metric-sub green">🛡 Secured connection</div>
+        </div>
+        <button type="button" class="intern-metric-card intern-upload-card" onclick="openInternModal()">
+          <div class="intern-metric-top"><span>Resume Upload</span><div class="intern-metric-icon blue">☁</div></div>
+          <div class="intern-metric-value word two-line">Manual<br/>Entry</div>
+          <div class="intern-metric-sub green">✚ Click to add candidate</div>
+        </button>
+      </div>
+      <div class="candidate-toolbar">
+        <div class="candidate-toolbar-spacer"></div>
+        <div class="candidate-search">
+          <span>⌕</span>
+          <input type="text" id="internSearch" placeholder="Search applicant or role..." oninput="filterInterns()"/>
+        </div>
+        <input class="candidate-date" type="date" id="internDateFilter" onchange="filterInterns()"/>
+      </div>
+      <div class="table-wrap interns-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>#</th><th>Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Current Project</th><th>Duration</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="internsTbody"></tbody>
+        </table>
+      </div>
+    </section>
+    <section id="page-employees" class="page">
+      <div class="intern-metric-grid">
+        <div class="intern-metric-card">
+          <div class="intern-metric-top"><span>Total Employees</span><div class="intern-metric-icon blue">👥</div></div>
+          <div class="intern-metric-value" id="employeeTotalCount">0</div>
+          <div class="intern-metric-sub green">● Live from Cloud DB</div>
+        </div>
+        <div class="intern-metric-card">
+          <div class="intern-metric-top"><span>Active Projects</span><div class="intern-metric-icon purple">💼</div></div>
+          <div class="intern-metric-value" id="employeeActiveProjectCount">0</div>
+          <div class="intern-metric-sub purple-text">◔ Managing team</div>
+        </div>
+        <div class="intern-metric-card">
+          <div class="intern-metric-top"><span>System Health</span><div class="intern-metric-icon green-bg">▰</div></div>
+          <div class="intern-metric-value word">Online</div>
+          <div class="intern-metric-sub green">🛡 Secured connection</div>
+        </div>
+        <button type="button" class="intern-metric-card intern-upload-card" onclick="openEmployeeModal()">
+          <div class="intern-metric-top"><span>Employee Entry</span><div class="intern-metric-icon blue">☁</div></div>
+          <div class="intern-metric-value word two-line">Manual<br/>Entry</div>
+          <div class="intern-metric-sub green">✚ Click to add employee</div>
+        </button>
+      </div>
+      <div class="candidate-toolbar">
+        <div class="candidate-toolbar-spacer"></div>
+        <div class="candidate-search">
+          <span>⌕</span>
+          <input type="text" id="employeeSearch" placeholder="Search applicant or role..." oninput="filterEmployees()"/>
+        </div>
+        <input class="candidate-date" type="date" id="employeeDateFilter" onchange="filterEmployees()"/>
+      </div>
+      <div class="table-wrap interns-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>#</th><th>Name</th><th>Role</th><th>Email</th><th>Phone</th><th>Department</th><th>Current Project</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="employeesTbody"></tbody>
+        </table>
+      </div>
+    </section>
+    <section id="page-enquiryform" class="page"><div class="page-actions"><h3 style="color:var(--text-primary)">Public Enquiry Form</h3><button class="btn-export" onclick="copyEnquiryLink()">Copy Form Link</button></div><div class="enq-form-layout"><div class="enq-form-preview"><div class="enq-form-preview-label">Form Preview</div><div class="public-enq-form"><div class="public-enq-title">Get In Touch With Us</div><div class="public-enq-sub">Fill the form below and we'll get back to you within 24 hours</div><div class="field-group"><label>Full Name *</label><input type="text" placeholder="Your full name"/></div><div class="field-group"><label>Phone *</label><input type="text" placeholder="+91 98765 43210"/></div><div class="field-group"><label>Email</label><input type="email" placeholder="your@email.com"/></div><div class="field-group"><label>Service Needed</label><select><option>Website Development</option><option>Mobile App</option><option>ERP Software</option><option>Digital Marketing</option><option>Other</option></select></div><div class="field-group"><label>Message</label><textarea rows="3" placeholder="Tell us about your requirement..."></textarea></div><button class="btn-primary" style="width:100%" onclick="submitPublicEnquiry()">Submit Enquiry</button></div></div><div class="enq-received"><div class="enq-received-title">Received Enquiries</div><div id="publicEnqList"></div></div></div></section>
+    <section id="page-clientprofile" class="page"><div class="profile-topbar"><button class="btn-back" onclick="navigate('clients')">Back to Clients</button><div class="profile-actions"><button class="btn-ghost" data-admin-only="true" onclick="printClientProfile()" style="padding:9px 16px;font-size:0.85rem">Print</button><button class="btn-primary" data-admin-only="true" onclick="editCurrentClient()">Edit Client</button><button class="btn-delete-sm" data-admin-only="true" onclick="deleteCurrentClient()">Delete</button></div></div><div class="profile-hero"><div class="profile-avatar" id="profileAvatar">A</div><div class="profile-hero-info"><h2 class="profile-name" id="profileName">-</h2><div class="profile-company" id="profileCompany">-</div><div class="profile-badges"><span id="profileStatusBadge"></span><span id="profilePayBadge"></span></div></div></div><div class="profile-stats" id="profileStats"></div><div class="profile-grid"><div class="profile-col"><div class="profile-card"><div class="profile-card-title">Personal Info</div><div class="profile-info-list" id="profileInfoList"></div></div><div class="profile-card"><div class="profile-card-title">Project Details</div><div class="profile-info-list" id="profileProjectList"></div><div class="profile-progress-wrap"><div class="profile-progress-label"><span>Payment Progress</span><span id="profileProgressPct">0%</span></div><div class="profile-progress-track"><div class="profile-progress-fill" id="profileProgressFill"></div></div></div></div></div><div class="profile-col"><div class="profile-card"><div class="profile-card-title" style="display:flex;justify-content:space-between;align-items:center;"><span>Notes</span><button class="btn-sm" data-admin-only="true" onclick="openNoteForClient()">+ Add</button></div><div class="profile-notes-list" id="profileNotesList"></div></div><div class="profile-card"><div class="profile-card-title" style="display:flex;justify-content:space-between;align-items:center;"><span>Documents</span><button class="btn-sm" data-admin-only="true" onclick="openDocForClient()">+ Upload</button></div><div class="profile-docs-list" id="profileDocsList"></div></div><div class="profile-card"><div class="profile-card-title">Recent Activity</div><div class="profile-activity-list" id="profileActivityList"></div></div></div></div></section>
+  </main>
+</div>
+<!-- Enquiry Modal -->
+<div class="modal-overlay hidden" id="enquiryModal">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h3>Add Enquiry</h3>
+      <button class="modal-close" onclick="closeEnquiryModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="field-group">
+          <label>Full Name *</label>
+          <input type="text" id="eqName" placeholder="John Doe"/>
+        </div>
+        <div class="field-group">
+          <label>Email</label>
+          <input type="email" id="eqEmail" placeholder="john@email.com"/>
+        </div>
+        <div class="field-group">
+          <label>Phone *</label>
+          <input type="text" id="eqPhone" placeholder="+91 98765 43210"/>
+        </div>
+        <div class="field-group">
+          <label>Service Needed</label>
+          <input type="text" id="eqService" placeholder="e.g. Website Development"/>
+        </div>
+        <div class="field-group">
+          <label>Status</label>
+          <select id="eqStatus">
+            <option>New</option>
+            <option>Contacted</option>
+            <option>Converted</option>
+            <option>Closed</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-group" style="margin-top:8px">
+        <label>Message</label>
+        <textarea id="eqMessage" rows="3" placeholder="What are they looking for?"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeEnquiryModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveEnquiry()">Save Enquiry</button>
+    </div>
+  </div>
+</div>
+
+<!-- Client Modal -->
+<div class="modal-overlay hidden" id="clientModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="clientModalTitle">Add New Client</h3>
+      <button class="modal-close" onclick="closeClientModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="clientId"/>
+      <div class="form-grid">
+
+        <div class="field-group" id="fg-fName">
+          <label>Full Name *</label>
+          <input type="text" id="fName" placeholder="John Doe"
+            oninput="enforceNameInput(this); validateField('fName')" onblur="validateField('fName')"/>
+          <span class="field-error" id="err-fName"></span>
+        </div>
+
+        <div class="field-group" id="fg-fEmail">
+          <label>Email *</label>
+          <input type="email" id="fEmail" placeholder="john@company.com"
+            oninput="validateField('fEmail')" onblur="validateField('fEmail')"/>
+          <span class="field-error" id="err-fEmail"></span>
+        </div>
+
+        <div class="field-group" id="fg-fPhone">
+          <label>Phone *</label>
+          <input type="tel" id="fPhone" placeholder="9876543210" maxlength="10"
+            oninput="enforcePhoneInput(this); validateField('fPhone')" onblur="validateField('fPhone')"/>
+          <span class="field-error" id="err-fPhone"></span>
+        </div>
+
+        <div class="field-group" id="fg-fCompany">
+          <label>Company Name</label>
+          <input type="text" id="fCompany" placeholder="ACME Corp"
+            oninput="validateField('fCompany')" onblur="validateField('fCompany')"/>
+          <span class="field-error" id="err-fCompany"></span>
+        </div>
+
+        <div class="field-group" id="fg-fProject">
+          <label>Project Name *</label>
+          <input type="text" id="fProject" placeholder="E-Commerce Website"
+            oninput="validateField('fProject')" onblur="validateField('fProject')"/>
+          <span class="field-error" id="err-fProject"></span>
+        </div>
+
+        <div class="field-group">
+          <label>Project Status</label>
+          <select id="fProjectStatus">
+            <option>Pending</option><option>In Progress</option><option>Completed</option>
+          </select>
+        </div>
+
+        <div class="field-group" id="fg-fQuotation">
+          <label>Quotation Amount (₹)</label>
+          <input type="number" id="fQuotation" placeholder="50000" min="0"
+            oninput="validateField('fQuotation')" onblur="validateField('fQuotation')"/>
+          <span class="field-error" id="err-fQuotation"></span>
+        </div>
+
+        <div class="field-group" id="fg-fPaid">
+          <label>Paid Amount (₹)</label>
+          <input type="number" id="fPaid" placeholder="25000" min="0"
+            oninput="validateField('fPaid')" onblur="validateField('fPaid')"/>
+          <span class="field-error" id="err-fPaid"></span>
+        </div>
+
+        <div class="field-group">
+          <label>Payment Status</label>
+          <select id="fPaymentStatus">
+            <option>Due</option><option>Partial</option><option>Paid</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label>Client Username</label>
+          <input type="text" id="fUsername" placeholder="Auto generated" readonly/>
+        </div>
+
+        <div class="field-group">
+          <label>Client Password</label>
+          <input type="text" id="fClientPassword" placeholder="Auto generated" readonly/>
+        </div>
+
+      </div>
+      <div class="client-cred-hint">
+        🔑 These credentials let the client log in and view their own dashboard
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn-ghost" onclick="closeClientModal()">Cancel</button>
+      <button type="button" class="btn-primary" onclick="saveClient(event)">Save Client</button>
+    </div>
+  </div>
+</div>
+
+<!-- Payment Update Modal -->
+<div class="modal-overlay hidden" id="paymentModal">
+  <div class="modal modal-sm payment-edit-modal">
+    <div class="modal-header">
+      <h3>Edit Payment</h3>
+      <button class="modal-close" onclick="closePaymentModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="payClientId"/>
+      <div class="payment-edit-hero">
+        <div class="payment-edit-icon"><i class="fa-solid fa-receipt"></i></div>
+        <div>
+          <div class="payment-edit-client" id="payClientName">Client</div>
+          <div class="payment-edit-project" id="payProjectName">Project</div>
+        </div>
+      </div>
+      <div class="payment-edit-grid">
+        <div class="payment-edit-stat"><span>Total</span><strong id="payTotalAmount">Rs 0</strong></div>
+        <div class="payment-edit-stat"><span>Remaining</span><strong id="payRemainingAmount">Rs 0</strong></div>
+      </div>
+      <div class="field-group">
+        <label>Project Name</label>
+        <input type="text" id="payProjectInput" placeholder="Enter project name"/>
+      </div>
+      <div class="field-group">
+        <label>Paid Amount</label>
+        <input type="number" id="payPaidAmount" min="0" step="0.01" placeholder="Enter paid amount" oninput="updatePaymentPreview()"/>
+      </div>
+      <div class="field-group">
+        <label>Payment Status</label>
+        <select id="payStatus" onchange="updatePaymentPreview()">
+          <option>Due</option><option>Partial</option><option>Paid</option>
+        </select>
+      </div>
+      <div class="payment-edit-hint" id="payEditHint">Update the collected amount and payment state manually.</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closePaymentModal()">Cancel</button>
+      <button class="btn-primary" onclick="savePayment()">Update</button>
+    </div>
+  </div>
+</div>
+
+<!-- Document Upload Modal -->
+<div class="modal-overlay hidden" id="docModal">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h3>Upload Document</h3>
+      <button class="modal-close" onclick="closeDocModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="field-group">
+        <label>Select Client</label>
+        <select id="docClientId"></select>
+      </div>
+      <div class="field-group">
+        <label>Document Title</label>
+        <input type="text" id="docTitle" placeholder="e.g. PRD v1.0"/>
+      </div>
+      <div class="field-group">
+        <label>File (PDF/DOC)</label>
+        <div class="file-drop" id="fileDrop" onclick="document.getElementById('docFile').click()">
+          <span id="fileDropLabel">📎 Click to select file</span>
+          <input type="file" id="docFile" accept=".pdf,.doc,.docx" style="display:none" onchange="onFileSelect(event)"/>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeDocModal()">Cancel</button>
+      <button class="btn-primary" onclick="uploadDoc()">Upload</button>
+    </div>
+  </div>
+</div>
+
+<!-- Note Modal -->
+<div class="modal-overlay hidden" id="noteModal">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h3>Add Note</h3>
+      <button class="modal-close" onclick="closeNoteModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="field-group">
+        <label>Select Client</label>
+        <select id="noteClientId"></select>
+      </div>
+      <div class="field-group">
+        <label>Note</label>
+        <textarea id="noteText" rows="4" placeholder="Write your note here…"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeNoteModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveNote()">Save Note</button>
+    </div>
+  </div>
+</div>
+
+<!-- Client View Modal -->
+<div class="modal-overlay hidden" id="viewModal">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h3>Client Details</h3>
+      <button class="modal-close" onclick="closeViewModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="view-grid">
+        <div class="view-row">
+          <div class="view-label">Full Name</div>
+          <div class="view-value" id="vName">—</div>
+        </div>
+        <div class="view-row">
+          <div class="view-label">Email</div>
+          <div class="view-value" id="vEmail">—</div>
+        </div>
+        <div class="view-row">
+          <div class="view-label">Phone</div>
+          <div class="view-value" id="vPhone">—</div>
+        </div>
+        <div class="view-row">
+          <div class="view-label">Company</div>
+          <div class="view-value" id="vCompany">—</div>
+        </div>
+        <div class="view-row">
+          <div class="view-label">Project</div>
+          <div class="view-value" id="vProject">—</div>
+        </div>
+        <div class="view-row">
+          <div class="view-label">Project Status</div>
+          <div class="view-value" id="vProjectStatus">—</div>
+        </div>
+        <div class="view-row">
+          <div class="view-label">Quotation Amount</div>
+          <div class="view-value" id="vQuotation">—</div>
+        </div>
+        <div class="view-row">
+          <div class="view-label">Paid Amount</div>
+          <div class="view-value" id="vPaid">—</div>
+        </div>
+        <div class="view-row">
+          <div class="view-label">Remaining</div>
+          <div class="view-value" id="vRemaining">—</div>
+        </div>
+        <div class="view-row">
+          <div class="view-label">Payment Status</div>
+          <div class="view-value" id="vPaymentStatus">—</div>
+        </div>
+        <div class="view-row">
+          <div class="view-label">Client Since</div>
+          <div class="view-value" id="vCreated">—</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeViewModal()">Close</button>
+      <button class="btn-edit" style="padding:10px 20px;font-size:0.88rem;" onclick="editFromView()">✎ Edit Client</button>
+      <button class="btn-delete" style="padding:10px 20px;font-size:0.88rem;" onclick="deleteFromView()">✕ Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- Milestone Modal -->
+<div class="modal-overlay hidden" id="milestoneModal">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h3>Add Milestone</h3>
+      <button class="modal-close" onclick="closeMilestoneModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="field-group">
+        <label>Milestone Title *</label>
+        <input type="text" id="msTitle" placeholder="e.g. Design Completed"/>
+      </div>
+      <div class="field-group">
+        <label>Date</label>
+        <input type="date" id="msDate"/>
+      </div>
+      <div class="field-group">
+        <label>Status</label>
+        <select id="msStatus">
+          <option>Completed</option>
+          <option>In Progress</option>
+          <option>Pending</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label>Description</label>
+        <textarea id="msDesc" rows="2" placeholder="Optional notes..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeMilestoneModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveMilestone()">Add Milestone</button>
+    </div>
+  </div>
+</div>
+
+<!-- Rating Modal (shown to clients) -->
+<div class="modal-overlay hidden" id="ratingModal">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h3>⭐ Rate Our Service</h3>
+      <button class="modal-close" onclick="closeRatingModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="rating-stars-input" id="ratingStarsInput">
+        <span class="star-input" data-val="1" onclick="setRating(1)">★</span>
+        <span class="star-input" data-val="2" onclick="setRating(2)">★</span>
+        <span class="star-input" data-val="3" onclick="setRating(3)">★</span>
+        <span class="star-input" data-val="4" onclick="setRating(4)">★</span>
+        <span class="star-input" data-val="5" onclick="setRating(5)">★</span>
+      </div>
+      <div class="field-group" style="margin-top:16px">
+        <label>Your Feedback</label>
+        <textarea id="ratingFeedback" rows="3" placeholder="Tell us about your experience..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeRatingModal()">Cancel</button>
+      <button class="btn-primary" onclick="submitRating()">Submit Rating</button>
+    </div>
+  </div>
+</div>
+
+<!-- Logout Confirmation Modal -->
+<div class="modal-overlay hidden" id="logoutConfirmModal">
+  <div class="modal modal-sm logout-confirm-modal">
+    <div class="logout-confirm-icon">🚪</div>
+    <div class="logout-confirm-title">Confirm Logout</div>
+    <div class="logout-confirm-sub">Are you sure you want to logout?<br/>You will need to sign in again to access your account.</div>
+    <div class="logout-confirm-btns">
+      <button class="btn-ghost logout-cancel-btn" onclick="closeLogoutConfirm()">✕ Cancel</button>
+      <button class="btn-logout-confirm" onclick="confirmLogout()">Yes, Logout</button>
+    </div>
+  </div>
+</div>
+
+<!-- Project Modal -->
+<div class="modal-overlay hidden" id="projectModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="projModalTitle">Add Project</h3>
+      <button class="modal-close" onclick="closeProjectModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="field-group" style="grid-column:1/-1">
+          <label>Project Name *</label>
+          <input type="text" id="projName" placeholder="e.g. E-Commerce Website"/>
+        </div>
+        <div class="field-group">
+          <label>Client *</label>
+          <select id="projClientId"></select>
+        </div>
+        <div class="field-group">
+          <label>Project Status</label>
+          <select id="projStatus"><option>Pending</option><option>In Progress</option><option>Completed</option><option>Upcoming</option></select>
+        </div>
+        <div class="field-group">
+          <label>Project Value (₹)</label>
+          <input type="number" id="projBudget" placeholder="150000"/>
+        </div>
+        <div class="field-group">
+          <label>Paid Amount (₹)</label>
+          <input type="number" id="projPaid" placeholder="0"/>
+        </div>
+        <div class="field-group">
+          <label>Payment Status</label>
+          <select id="projPayStatus"><option>Due</option><option>Partial</option><option>Paid</option></select>
+        </div>
+        <div class="field-group">
+          <label>Start Date</label>
+          <input type="date" id="projStartDate"/>
+        </div>
+        <div class="field-group">
+          <label>Deadline</label>
+          <input type="date" id="projDeadline"/>
+        </div>
+        <div class="field-group" style="grid-column:1/-1">
+          <label>Description</label>
+          <textarea id="projDesc" rows="2" placeholder="Brief project description..."></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeProjectModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveProject()">Save Project</button>
+    </div>
+  </div>
+</div>
+
+<!-- Things Expense Modal -->
+<div class="modal-overlay hidden" id="thingsExpenseModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="thingsExpenseModalTitle">Add Things Expense</h3>
+      <button class="modal-close" onclick="closeThingsExpenseModal()">x</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="thingsExpenseId"/>
+      <div class="form-grid">
+        <div class="field-group"><label>Date</label><input type="date" id="thingsDate"/></div>
+        <div class="field-group"><label>Vehicle Number</label><input type="text" id="thingsVehicleNo" placeholder="TN75AP2733"/></div>
+        <div class="field-group"><label>Product Name</label><input type="text" id="thingsProductName" placeholder="Firewood"/></div>
+        <div class="field-group"><label>First Weight</label><input type="number" id="thingsFirstWeight" min="0" step="0.01" placeholder="4190" oninput="updateThingsNetWeightPreview()"/></div>
+        <div class="field-group"><label>Second Weight</label><input type="number" id="thingsSecondWeight" min="0" step="0.01" placeholder="1500" oninput="updateThingsNetWeightPreview()"/></div>
+        <div class="field-group"><label>Net Weight</label><input type="text" id="thingsNetWeightPreview" value="0 KG" readonly/></div>
+        <div class="field-group"><label>Rate</label><input type="number" id="thingsCharges" min="0" step="0.01" placeholder="50"/></div>
+        <div class="field-group"><label>Amount</label><input type="number" id="thingsAmount" min="0" step="0.01" placeholder="11298"/></div>
+      </div>
+      <div class="field-group" style="margin-top:12px"><label>Notes</label><textarea id="thingsNotes" rows="3" placeholder="Optional notes"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeThingsExpenseModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveThingsExpense()">Save Expense</button>
+    </div>
+  </div>
+</div>
+
+<!-- Things Product Modal -->
+<div class="modal-overlay hidden" id="thingsProductModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="thingsProductModalTitle">Add Product</h3>
+      <button class="modal-close" onclick="closeThingsProductModal()">x</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="thingsProductId"/>
+      <div class="form-grid">
+        <div class="field-group"><label>Product Name</label><input type="text" id="thingsProductCardName" placeholder="Cement Waste"/></div>
+        <div class="field-group"><label>Icon Text</label><input type="text" id="thingsProductCardIcon" maxlength="3" placeholder="CW"/></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeThingsProductModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveThingsProduct()">Save Product</button>
+    </div>
+  </div>
+</div>
+
+<!-- Employee Salary Modal -->
+<div class="modal-overlay hidden" id="employeeSalaryModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="employeeSalaryModalTitle">Add Salary</h3>
+      <button class="modal-close" onclick="closeEmployeeSalaryModal()">x</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="employeeSalaryId"/>
+      <div class="form-grid salary-modal-grid">
+        <div class="field-group"><label>Worker Name</label><input type="text" id="salaryEmployeeName" placeholder="Worker name"/></div>
+        <div class="field-group"><label>Salary Month</label><input type="month" id="salaryEntryMonth" onchange="renderEmployeeSalaryModalSaturdays()"/></div>
+      </div>
+      <div class="salary-modal-saturdays" id="salarySaturdayAmounts"></div>
+      <div class="field-group" style="margin-top:12px"><label>Notes</label><textarea id="salaryNotes" rows="3" placeholder="Optional notes"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeEmployeeSalaryModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveEmployeeSalary()">Save Salary</button>
+    </div>
+  </div>
+</div>
+
+<!-- Employee Modal -->
+<div class="modal-overlay hidden" id="employeeModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="employeeModalTitle">Add Employee Manually</h3>
+      <button class="modal-close" onclick="closeEmployeeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="employeeId"/>
+      <div class="form-grid candidate-form" id="employeeCandidateForm" novalidate>
+        <div class="field-group candidate-field">
+          <label for="employeeName">Full Name</label>
+          <input type="text" id="employeeName" autocomplete="name" aria-describedby="employeeNameError" aria-invalid="false"/>
+          <div class="field-error" id="employeeNameError" aria-live="polite"></div>
+        </div>
+        <div class="field-group candidate-field">
+          <label for="employeeEmail">Email Address</label>
+          <input type="email" id="employeeEmail" autocomplete="email" aria-describedby="employeeEmailError" aria-invalid="false"/>
+          <div class="field-error" id="employeeEmailError" aria-live="polite"></div>
+        </div>
+        <div class="field-group candidate-field">
+          <label for="employeePhone">Phone Number</label>
+          <input type="tel" id="employeePhone" inputmode="numeric" maxlength="10" autocomplete="tel" aria-describedby="employeePhoneError" aria-invalid="false"/>
+          <div class="field-error" id="employeePhoneError" aria-live="polite"></div>
+        </div>
+        <div class="field-group candidate-field">
+          <label for="employeeRole">Position (Role)</label>
+          <select id="employeeRole" aria-describedby="employeeRoleError" aria-invalid="false"><option value="">Select an active position...</option><option>Developer</option><option>Designer</option><option>Manager</option><option>HR</option><option>Testing</option></select>
+          <div class="field-error" id="employeeRoleError" aria-live="polite"></div>
+        </div>
+        <div class="field-group candidate-field">
+          <label for="employeeCurrentProject">Current Project</label>
+          <input type="text" id="employeeCurrentProject" placeholder="e.g. NexaCRM"/>
+        </div>
+        <div class="field-group candidate-field">
+          <label for="employeeStatus">Status</label>
+          <select id="employeeStatus"><option selected>Active</option><option>Training</option><option>Completed</option><option>On Hold</option></select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeEmployeeModal()">Cancel</button>
+      <button class="btn-primary candidate-submit-btn" id="employeeSubmitBtn" onclick="saveEmployee()" disabled>Upload & Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Intern Modal -->
+<div class="modal-overlay hidden" id="internModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="internModalTitle">Add Candidate Manually</h3>
+      <button class="modal-close" onclick="closeInternModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="internId"/>
+      <div class="form-grid candidate-form" id="internCandidateForm" novalidate>
+        <div class="field-group candidate-field">
+          <label for="internName">Full Name</label>
+          <input type="text" id="internName" autocomplete="name" aria-describedby="internNameError" aria-invalid="false"/>
+          <div class="field-error" id="internNameError" aria-live="polite"></div>
+        </div>
+        <div class="field-group candidate-field">
+          <label for="internEmail">Email Address</label>
+          <input type="email" id="internEmail" autocomplete="email" aria-describedby="internEmailError" aria-invalid="false"/>
+          <div class="field-error" id="internEmailError" aria-live="polite"></div>
+        </div>
+        <div class="field-group candidate-field">
+          <label for="internPhone">Phone Number</label>
+          <input type="tel" id="internPhone" inputmode="numeric" maxlength="10" autocomplete="tel" aria-describedby="internPhoneError" aria-invalid="false"/>
+          <div class="field-error" id="internPhoneError" aria-live="polite"></div>
+        </div>
+        <div class="field-group candidate-field">
+          <label for="internRole">Position (Role)</label>
+          <select id="internRole" aria-describedby="internRoleError" aria-invalid="false"><option value="">Select an active position...</option><option>Full Stack Intern</option><option>Frontend Intern</option><option>Backend Intern</option><option>UI/UX Intern</option><option>Mobile Intern</option><option>Digital Marketing Intern</option></select>
+          <div class="field-error" id="internRoleError" aria-live="polite"></div>
+        </div>
+        <div class="field-group candidate-field">
+          <label for="internCurrentProject">Current Project</label>
+          <input type="text" id="internCurrentProject" placeholder="e.g. NexaCRM"/>
+        </div>
+        <div class="field-group candidate-field">
+          <label for="internDuration">Duration</label>
+          <select id="internDuration"><option>1 Month</option><option>2 Months</option><option selected>3 Months</option><option>6 Months</option></select>
+        </div>
+        <div class="field-group candidate-field">
+          <label for="internStatus">Status</label>
+          <select id="internStatus"><option selected>Active</option><option>Training</option><option>Completed</option><option>On Hold</option></select>
+        </div>
+        <div class="field-group candidate-field candidate-file-field">
+          <label for="internResume">Resume Upload</label>
+          <input type="file" id="internResume" accept=".pdf,.doc,.docx" aria-describedby="internResumeError internResumeName" aria-invalid="false"/>
+          <div class="resume-file-name" id="internResumeName">No resume selected</div>
+          <div class="resume-strength" id="internResumeStrength"><span></span></div>
+          <div class="field-error" id="internResumeError" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" onclick="closeInternModal()">Cancel</button>
+      <button class="btn-primary candidate-submit-btn" id="internSubmitBtn" onclick="saveIntern()" disabled>Upload & Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast hidden" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="app.js?v=timeline-whatsapp-1"></script>
+</body>
+</html>

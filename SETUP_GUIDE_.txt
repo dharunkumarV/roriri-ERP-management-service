@@ -1,0 +1,162 @@
+RORIRI 1.0 - Setup Guide
+========================
+
+Files Needed
+------------
+
+You should receive these files:
+
+1. RORIRI 1.0.zip
+2. nexacrm_db.sql
+3. db_Roriri_ERP.sql
+4. college_db.sql
+5. invoice_db.sql
+
+
+Step 1: Install Required Software
+---------------------------------
+
+Install these on your laptop:
+
+1. Node.js
+2. MySQL 8.0
+3. VS Code or any code editor
+
+
+Step 2: Extract Project ZIP
+---------------------------
+
+Extract:
+
+RORIRI 1.0.zip
+
+Example location:
+
+C:\Users\YourName\Desktop\RORIRI 1.0
+
+
+Step 3: Create MySQL Databases
+------------------------------
+
+Open MySQL Command Line Client and run:
+
+CREATE DATABASE nexacrm_db;
+CREATE DATABASE db_Roriri_ERP;
+CREATE DATABASE college_db;
+CREATE DATABASE invoice_db;
+
+Then exit MySQL:
+
+exit;
+
+
+Step 4: Import SQL Files
+------------------------
+
+Open Command Prompt in the folder where the .sql files are located.
+
+Run these commands one by one:
+
+mysql -u root -p nexacrm_db < nexacrm_db.sql
+
+mysql -u root -p db_Roriri_ERP < db_Roriri_ERP.sql
+
+mysql -u root -p college_db < college_db.sql
+
+mysql -u root -p invoice_db < invoice_db.sql
+
+Enter your MySQL password each time.
+
+
+Step 5: Configure Backend Environment
+-------------------------------------
+
+Open this file:
+
+backend\.env
+
+Update the MySQL username and password if different on your laptop.
+
+Example:
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=nexacrm_db
+
+ERP_DB_NAME=db_Roriri_ERP
+COLLEGE_DB_NAME=college_db
+INVOICE_DB_NAME=invoice_db
+
+If the .env file has separate values like ERP_DB_PASSWORD, COLLEGE_DB_PASSWORD,
+or INVOICE_DB_PASSWORD, update those also.
+
+
+Step 6: Install Backend Packages
+--------------------------------
+
+Open Command Prompt and run:
+
+cd "C:\Users\YourName\Desktop\RORIRI 1.0\backend"
+npm install
+
+
+Step 7: Start Backend
+---------------------
+
+From the backend folder, run:
+
+node server.js
+
+The backend should run on:
+
+http://localhost:8080
+
+
+Step 8: Open Frontend
+---------------------
+
+Open this file in your browser:
+
+RORIRI 1.0\frontend\index.html
+
+You can also use VS Code Live Server if available.
+
+
+Step 9: Login And Test
+----------------------
+
+Use the login credentials from the imported database.
+
+If login does not work, check:
+
+1. MySQL service is running.
+2. The 4 databases were created.
+3. The 4 SQL files were imported successfully.
+4. backend\.env has the correct MySQL password.
+5. Backend is running using node server.js.
+6. Browser console and backend terminal do not show errors.
+
+
+Important Notes
+---------------
+
+1. If the project uses uploaded documents, make sure this folder is included:
+
+   backend\uploads
+
+   Without this folder, document records may appear in the app, but downloads may fail.
+
+2. Do not share real production passwords or secret API keys publicly.
+
+3. If npm install fails, check that Node.js is installed correctly:
+
+   node -v
+   npm -v
+
+4. If MySQL import fails, confirm the database exists first:
+
+   SHOW DATABASES;
+
+5. If the backend cannot connect to MySQL, update backend\.env with the correct
+   MySQL username, password, host, port, and database names.

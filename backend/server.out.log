@@ -1,0 +1,16 @@
+
+> nexacrm-backend@1.0.0 start
+> node server.js
+
+◇ injected env (8) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+✅ All tables ready!
+
+╔══════════════════════════════════════╗
+║   NexaCRM Backend is RUNNING! 🚀     ║
+╠══════════════════════════════════════╣
+║   API: http://localhost:8080         ║
+║   DB:  MySQL ✅                      ║
+║   Login: admin@gmail.com             ║
+║   Pass:  admin                       ║
+╚══════════════════════════════════════╝
+

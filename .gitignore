@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.*
+backend/.env
+backend/.env.*
+*.sql
+uploads/
+dist/
+build/
+.DS_Store

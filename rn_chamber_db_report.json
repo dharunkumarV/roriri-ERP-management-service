@@ -1,0 +1,1405 @@
+{
+  "database": "nexacrm_db",
+  "generatedAt": "2026-05-22T01:23:36.904Z",
+  "schemas": {
+    "expense_details": {
+      "rowCount": 32,
+      "columns": [
+        {
+          "field": "expense_id",
+          "type": "int",
+          "null": "NO",
+          "key": "PRI",
+          "default": null,
+          "extra": "auto_increment"
+        },
+        {
+          "field": "sub_id",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "cash_handler",
+          "type": "varchar(100)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "date",
+          "type": "date",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "amount",
+          "type": "varchar(20)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "bill",
+          "type": "varchar(50)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "description",
+          "type": "text",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "mode",
+          "type": "enum('Cash','Gpay','Phonepe','Cheque','Paytm')",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "transaction_id",
+          "type": "varchar(50)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "created_at",
+          "type": "datetime",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED"
+        },
+        {
+          "field": "updated_at",
+          "type": "timestamp",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+        },
+        {
+          "field": "status",
+          "type": "enum('Active','Inactive')",
+          "null": "NO",
+          "key": "",
+          "default": "Active",
+          "extra": ""
+        }
+      ]
+    },
+    "expense_subcategory": {
+      "rowCount": 14,
+      "columns": [
+        {
+          "field": "subcat_id",
+          "type": "int",
+          "null": "NO",
+          "key": "PRI",
+          "default": null,
+          "extra": "auto_increment"
+        },
+        {
+          "field": "cat_id",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "name",
+          "type": "varchar(200)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "updated_at",
+          "type": "timestamp",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+        },
+        {
+          "field": "status",
+          "type": "enum('Active','Inactive')",
+          "null": "NO",
+          "key": "",
+          "default": "Active",
+          "extra": ""
+        }
+      ]
+    },
+    "expense_category": {
+      "rowCount": 4,
+      "columns": [
+        {
+          "field": "cat_id",
+          "type": "int",
+          "null": "NO",
+          "key": "PRI",
+          "default": null,
+          "extra": "auto_increment"
+        },
+        {
+          "field": "name",
+          "type": "varchar(200)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "updated_at",
+          "type": "timestamp",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+        },
+        {
+          "field": "status",
+          "type": "enum('Active','Inactive')",
+          "null": "NO",
+          "key": "",
+          "default": "Active",
+          "extra": ""
+        }
+      ]
+    },
+    "project_amount": {
+      "rowCount": 0,
+      "columns": [
+        {
+          "field": "pro_amt_id",
+          "type": "int",
+          "null": "NO",
+          "key": "PRI",
+          "default": null,
+          "extra": "auto_increment"
+        },
+        {
+          "field": "project_id",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "amnt_received",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "pay_date",
+          "type": "date",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "pay_mode",
+          "type": "enum('Cash','Net Banking','Online Payment','Cheque')",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "received_by",
+          "type": "varchar(50)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "tranx_id",
+          "type": "varchar(11)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "pay_status",
+          "type": "enum('Pending','Completed')",
+          "null": "NO",
+          "key": "",
+          "default": "Pending",
+          "extra": ""
+        },
+        {
+          "field": "created_at",
+          "type": "datetime",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED"
+        },
+        {
+          "field": "updated_at",
+          "type": "timestamp",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED"
+        }
+      ]
+    },
+    "project_tbl": {
+      "rowCount": 10,
+      "columns": [
+        {
+          "field": "project_id",
+          "type": "int",
+          "null": "NO",
+          "key": "PRI",
+          "default": null,
+          "extra": "auto_increment"
+        },
+        {
+          "field": "project_name",
+          "type": "varchar(50)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "services",
+          "type": "varchar(200)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "technology",
+          "type": "varchar(200)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "developers",
+          "type": "varchar(200)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "client",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "start_date",
+          "type": "date",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "duration",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "total_pay",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "description",
+          "type": "varchar(200)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "pay_status",
+          "type": "enum('Pending','Completed')",
+          "null": "NO",
+          "key": "",
+          "default": "Pending",
+          "extra": ""
+        },
+        {
+          "field": "project_status",
+          "type": "enum('Completed','New','In Progress')",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "status",
+          "type": "enum('Active','Inactive')",
+          "null": "NO",
+          "key": "",
+          "default": "Active",
+          "extra": ""
+        },
+        {
+          "field": "created_at",
+          "type": "datetime",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED"
+        },
+        {
+          "field": "updated_at",
+          "type": "timestamp",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED"
+        }
+      ]
+    },
+    "client_tbl": {
+      "rowCount": 16,
+      "columns": [
+        {
+          "field": "client_id",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "entity_id",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "client_name",
+          "type": "varchar(50)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "client_company",
+          "type": "varchar(100)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "client_location",
+          "type": "varchar(100)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "client_email",
+          "type": "varchar(50)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "client_phone",
+          "type": "varchar(11)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "client_gst",
+          "type": "varchar(30)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "client_status",
+          "type": "enum('Active','Inactive')",
+          "null": "NO",
+          "key": "",
+          "default": "Active",
+          "extra": ""
+        },
+        {
+          "field": "client_created_date",
+          "type": "datetime",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED"
+        },
+        {
+          "field": "client_updated_date",
+          "type": "timestamp",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+        }
+      ]
+    },
+    "iv_payment_tbl": {
+      "rowCount": 1,
+      "columns": [
+        {
+          "field": "id",
+          "type": "int",
+          "null": "NO",
+          "key": "PRI",
+          "default": null,
+          "extra": "auto_increment"
+        },
+        {
+          "field": "visit_id",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "food_id",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "reason",
+          "type": "enum('IV','Food')",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "amount",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "payment_method",
+          "type": "enum('GPay','PhonePay','Cash','RazorPay')",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "traisanction_id",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "razorpay_payment_id",
+          "type": "varchar(50)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "razorpay_order_id",
+          "type": "varchar(20)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "paid_date",
+          "type": "date",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "pay_status",
+          "type": "enum('Paid','Unpaid')",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "cretaed_at",
+          "type": "datetime",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED"
+        },
+        {
+          "field": "created_by",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "updated_by",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "status",
+          "type": "enum('Active','Inactive')",
+          "null": "NO",
+          "key": "",
+          "default": "Active",
+          "extra": ""
+        }
+      ]
+    },
+    "salary_tbl": {
+      "rowCount": 7,
+      "columns": [
+        {
+          "field": "salary_id",
+          "type": "int",
+          "null": "NO",
+          "key": "PRI",
+          "default": null,
+          "extra": "auto_increment"
+        },
+        {
+          "field": "basic_id",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "salary",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "days",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "month",
+          "type": "varchar(100)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "status",
+          "type": "enum('Active','Inactive')",
+          "null": "NO",
+          "key": "",
+          "default": "Active",
+          "extra": ""
+        },
+        {
+          "field": "created_date",
+          "type": "datetime",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED"
+        },
+        {
+          "field": "updated_date",
+          "type": "timestamp",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED"
+        }
+      ]
+    },
+    "basic_details": {
+      "rowCount": 330,
+      "columns": [
+        {
+          "field": "id",
+          "type": "int",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "name",
+          "type": "varchar(100)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "dob",
+          "type": "varchar(20)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "email",
+          "type": "varchar(100)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "phone",
+          "type": "varchar(10)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "blood_group",
+          "type": "varchar(50)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "username",
+          "type": "varchar(100)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "password",
+          "type": "varchar(100)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "address",
+          "type": "varchar(100)",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "gender",
+          "type": "enum('Male','Female','Others')",
+          "null": "NO",
+          "key": "",
+          "default": null,
+          "extra": ""
+        },
+        {
+          "field": "status",
+          "type": "enum('Active','Inactive')",
+          "null": "NO",
+          "key": "",
+          "default": "Active",
+          "extra": ""
+        },
+        {
+          "field": "is_admin",
+          "type": "enum('True','False')",
+          "null": "NO",
+          "key": "",
+          "default": "False",
+          "extra": ""
+        },
+        {
+          "field": "created_at",
+          "type": "datetime",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED"
+        },
+        {
+          "field": "updated_at",
+          "type": "timestamp",
+          "null": "NO",
+          "key": "",
+          "default": "CURRENT_TIMESTAMP",
+          "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+        }
+      ]
+    }
+  },
+  "pages": {
+    "thingsExpense": {
+      "products": [
+        {
+          "id": 6,
+          "name": "Canteen",
+          "icon": "CAN"
+        },
+        {
+          "id": 8,
+          "name": "Digital Marketing",
+          "icon": "DIG"
+        },
+        {
+          "id": 7,
+          "name": "EB Bill",
+          "icon": "EBB"
+        },
+        {
+          "id": 3,
+          "name": "Employee Salary",
+          "icon": "EMP"
+        },
+        {
+          "id": 5,
+          "name": "Employee Salary",
+          "icon": "EMP"
+        },
+        {
+          "id": 10,
+          "name": "Event",
+          "icon": "EVE"
+        },
+        {
+          "id": 4,
+          "name": "Garden Employee Salary",
+          "icon": "GAR"
+        },
+        {
+          "id": 11,
+          "name": "Inhouse",
+          "icon": "INH"
+        },
+        {
+          "id": 12,
+          "name": "Loan",
+          "icon": "LOA"
+        },
+        {
+          "id": 9,
+          "name": "Monthly Due",
+          "icon": "MON"
+        },
+        {
+          "id": 14,
+          "name": "Old Debt",
+          "icon": "OLD"
+        },
+        {
+          "id": 1,
+          "name": "Others",
+          "icon": "OTH"
+        },
+        {
+          "id": 13,
+          "name": "Part Time Employee Salary",
+          "icon": "PAR"
+        },
+        {
+          "id": 2,
+          "name": "Petrol",
+          "icon": "PET"
+        }
+      ],
+      "expenses": [
+        {
+          "id": 32,
+          "date": "2025-08-11",
+          "vehicleNo": "Tester",
+          "productName": "Canteen",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "5000.00",
+          "notes": ""
+        },
+        {
+          "id": 31,
+          "date": "2024-11-30",
+          "vehicleNo": "Debtor",
+          "productName": "Old Debt",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "20000.00",
+          "notes": ""
+        },
+        {
+          "id": 30,
+          "date": "2024-11-30",
+          "vehicleNo": "Bank",
+          "productName": "Loan",
+          "charges": "Gpay",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "210371.00",
+          "notes": ""
+        },
+        {
+          "id": 29,
+          "date": "2024-11-30",
+          "vehicleNo": "Rani",
+          "productName": "Event",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "680.00",
+          "notes": ""
+        },
+        {
+          "id": 28,
+          "date": "2024-11-30",
+          "vehicleNo": "Mydeen",
+          "productName": "Monthly Due",
+          "charges": "Gpay",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "8408.00",
+          "notes": "Router amount"
+        },
+        {
+          "id": 27,
+          "date": "2024-11-30",
+          "vehicleNo": "Influencer",
+          "productName": "Digital Marketing",
+          "charges": "Gpay",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "6000.00",
+          "notes": "Video edit , Ads run"
+        },
+        {
+          "id": 26,
+          "date": "2024-11-30",
+          "vehicleNo": "Government",
+          "productName": "EB Bill",
+          "charges": "Gpay",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "121765.00",
+          "notes": ""
+        },
+        {
+          "id": 25,
+          "date": "2024-11-30",
+          "vehicleNo": "Worker",
+          "productName": "Canteen",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "67970.00",
+          "notes": ""
+        },
+        {
+          "id": 24,
+          "date": "2024-11-30",
+          "vehicleNo": "Garden Employee",
+          "productName": "Garden Employee Salary",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "35795.00",
+          "notes": ""
+        },
+        {
+          "id": 23,
+          "date": "2024-11-30",
+          "vehicleNo": "Employee",
+          "productName": "Employee Salary",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "424155.00",
+          "notes": "Employee monthly salary"
+        },
+        {
+          "id": 20,
+          "date": "2024-11-22",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "22770.00",
+          "notes": "Tax Charge"
+        },
+        {
+          "id": 21,
+          "date": "2024-11-21",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "80.00",
+          "notes": "ID Card"
+        },
+        {
+          "id": 13,
+          "date": "2024-11-20",
+          "vehicleNo": "Mr.Mydeen",
+          "productName": "Petrol",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "50.00",
+          "notes": "Petrol"
+        },
+        {
+          "id": 22,
+          "date": "2024-11-18",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "2000.00",
+          "notes": "Color Xerox"
+        },
+        {
+          "id": 16,
+          "date": "2024-11-18",
+          "vehicleNo": "Mr.Mydeen",
+          "productName": "Petrol",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "50.00",
+          "notes": "Petrol"
+        },
+        {
+          "id": 15,
+          "date": "2024-11-18",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "400.00",
+          "notes": "Stickers"
+        },
+        {
+          "id": 14,
+          "date": "2024-11-18",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "180.00",
+          "notes": "Bolt"
+        },
+        {
+          "id": 12,
+          "date": "2024-11-15",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "7500.00",
+          "notes": "Sand"
+        },
+        {
+          "id": 17,
+          "date": "2024-11-14",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "599.00",
+          "notes": "Note"
+        },
+        {
+          "id": 11,
+          "date": "2024-11-14",
+          "vehicleNo": "Mr.Mydeen",
+          "productName": "Petrol",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "50.00",
+          "notes": "Petrol"
+        },
+        {
+          "id": 10,
+          "date": "2024-11-14",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "70.00",
+          "notes": "Pen"
+        },
+        {
+          "id": 18,
+          "date": "2024-11-12",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "710.00",
+          "notes": "Tea"
+        },
+        {
+          "id": 19,
+          "date": "2024-11-11",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "280.00",
+          "notes": "tea"
+        },
+        {
+          "id": 9,
+          "date": "2024-11-11",
+          "vehicleNo": "Mr.Mydeen",
+          "productName": "Petrol",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "50.00",
+          "notes": "Petrol"
+        },
+        {
+          "id": 8,
+          "date": "2024-11-11",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "130.00",
+          "notes": "Peanut"
+        },
+        {
+          "id": 7,
+          "date": "2024-11-07",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "1000.00",
+          "notes": "Realmi 5"
+        },
+        {
+          "id": 6,
+          "date": "2024-11-07",
+          "vehicleNo": "Mr.Mydeen",
+          "productName": "Petrol",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "50.00",
+          "notes": "Petrol"
+        },
+        {
+          "id": 5,
+          "date": "2024-11-05",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "2530.00",
+          "notes": "xerox"
+        },
+        {
+          "id": 4,
+          "date": "2024-11-04",
+          "vehicleNo": "Mr.Mydeen",
+          "productName": "Petrol",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "50.00",
+          "notes": "Petrol"
+        },
+        {
+          "id": 3,
+          "date": "2024-11-04",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "596.00",
+          "notes": "Food"
+        },
+        {
+          "id": 2,
+          "date": "2024-11-04",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "400.00",
+          "notes": "food"
+        },
+        {
+          "id": 1,
+          "date": "2024-11-02",
+          "vehicleNo": "Roriri Software Solution Pvt ltd",
+          "productName": "Others",
+          "charges": "Cash",
+          "firstWeight": 0,
+          "secondWeight": 0,
+          "netWeight": 0,
+          "amount": "120.00",
+          "notes": "Box"
+        }
+      ]
+    },
+    "bricksIncome": [
+      {
+        "id": "iv-1",
+        "date": "2024-10-30",
+        "customer": "Food",
+        "detail": "Food Payment",
+        "rate": 3000,
+        "count": 1,
+        "amount": 3000,
+        "paymentStatus": "Paid"
+      }
+    ],
+    "employeeSalary": [
+      {
+        "id": 4,
+        "date": "2024-08-03",
+        "employeeName": "Vasanth M",
+        "salaryAmount": 14400,
+        "finalSalary": 14400,
+        "status": "Paid",
+        "notes": "ERP month: 2024-08-30, Days: 645"
+      },
+      {
+        "id": 4,
+        "date": "2024-08-03",
+        "employeeName": "Vasanth M",
+        "salaryAmount": 14400,
+        "finalSalary": 14400,
+        "status": "Paid",
+        "notes": "ERP month: 2024-08-30, Days: 645"
+      },
+      {
+        "id": 6,
+        "date": "2024-08-03",
+        "employeeName": "Vasanth M",
+        "salaryAmount": 15000,
+        "finalSalary": 15000,
+        "status": "Paid",
+        "notes": "ERP month: 2024-08-14, Days: 2"
+      },
+      {
+        "id": 6,
+        "date": "2024-08-03",
+        "employeeName": "Vasanth M",
+        "salaryAmount": 15000,
+        "finalSalary": 15000,
+        "status": "Paid",
+        "notes": "ERP month: 2024-08-14, Days: 2"
+      },
+      {
+        "id": 5,
+        "date": "2024-08-03",
+        "employeeName": "Sriram Kumar",
+        "salaryAmount": 14355,
+        "finalSalary": 14355,
+        "status": "Paid",
+        "notes": "ERP month: 2024-08-02, Days: 45"
+      },
+      {
+        "id": 5,
+        "date": "2024-08-03",
+        "employeeName": "Sriram Kumar",
+        "salaryAmount": 14355,
+        "finalSalary": 14355,
+        "status": "Paid",
+        "notes": "ERP month: 2024-08-02, Days: 45"
+      },
+      {
+        "id": 7,
+        "date": "2024-08-03",
+        "employeeName": "Mariraj R",
+        "salaryAmount": 43423,
+        "finalSalary": 43423,
+        "status": "Paid",
+        "notes": "ERP month: 2024-08-01, Days: 23"
+      },
+      {
+        "id": 7,
+        "date": "2024-08-03",
+        "employeeName": "Mariraj R",
+        "salaryAmount": 43423,
+        "finalSalary": 43423,
+        "status": "Paid",
+        "notes": "ERP month: 2024-08-01, Days: 23"
+      },
+      {
+        "id": 3,
+        "date": "2024-08-03",
+        "employeeName": "Gnana Jebastin S",
+        "salaryAmount": 12000,
+        "finalSalary": 12000,
+        "status": "Paid",
+        "notes": "ERP month: 2024-08-01, Days: 25"
+      },
+      {
+        "id": 3,
+        "date": "2024-08-03",
+        "employeeName": "Gnana Jebastin S",
+        "salaryAmount": 12000,
+        "finalSalary": 12000,
+        "status": "Paid",
+        "notes": "ERP month: 2024-08-01, Days: 25"
+      },
+      {
+        "id": 1,
+        "date": "2024-08-03",
+        "employeeName": "King Shalem S",
+        "salaryAmount": 15000,
+        "finalSalary": 15000,
+        "status": "Paid",
+        "notes": "ERP month: 2024-08-01, Days: 0"
+      },
+      {
+        "id": 1,
+        "date": "2024-08-03",
+        "employeeName": "King Shalem S",
+        "salaryAmount": 15000,
+        "finalSalary": 15000,
+        "status": "Paid",
+        "notes": "ERP month: 2024-08-01, Days: 0"
+      },
+      {
+        "id": 2,
+        "date": "2024-07-06",
+        "employeeName": "King Shalem S",
+        "salaryAmount": 15000,
+        "finalSalary": 15000,
+        "status": "Paid",
+        "notes": "ERP month: 2024-07-01, Days: 0"
+      },
+      {
+        "id": 2,
+        "date": "2024-07-06",
+        "employeeName": "King Shalem S",
+        "salaryAmount": 15000,
+        "finalSalary": 15000,
+        "status": "Paid",
+        "notes": "ERP month: 2024-07-01, Days: 0"
+      }
+    ]
+  }
+}
